@@ -23,6 +23,7 @@ import { ConfigModule } from '@nestjs/config';
     ConfigModule.forRoot({
       isGlobal: true,
       validationSchema: Joi.object({
+        PORT: Joi.number().required(),
         MONGODB_URI: Joi.string().required(),
       }),
     }),

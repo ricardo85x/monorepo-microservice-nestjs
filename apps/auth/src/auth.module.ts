@@ -18,10 +18,12 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
           expiresIn: `${configService.get('JWT_EXPIRATION_TIME')}s`,
         },
       }),
+      inject: [ConfigService],
     }),
     ConfigModule.forRoot({
       isGlobal: true,
       validationSchema: Joi.object({
+        PORT: Joi.number().required(),
         MONGODB_URI: Joi.string().required(),
         JWT_SECRET: Joi.string().required(),
         JWT_EXPIRATION_TIME: Joi.string().required(),
